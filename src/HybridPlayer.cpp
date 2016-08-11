@@ -57,9 +57,9 @@ size_t HybridPlayer::makeMove(const Board& b, Board::Player p) {
 			g.board() = moved;
 			g.toMove() = o;
 			
-			while(!g.step());
-			
-			auto winner = g.board().winner();
+			Board::Player winner;
+
+			while((winner = g.step()) == Board::Player::NONE);
 
 			if(winner == p) {
 				score++;

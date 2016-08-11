@@ -17,7 +17,7 @@ public:
 	const Board::Player& toMove() const;
 	Board::Player& toMove();
 
-	bool step();
+	Board::Player step();
 
 private:
 	Board _board;

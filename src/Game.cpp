@@ -27,7 +27,7 @@ const Board::Player& Game::toMove() const {
 	return _toMove;
 }
 
-bool Game::step() {
+Board::Player Game::step() {
 	assert(!_board.isGameOver());
 
 	size_t move = _toMove == Board::Player::P2 ? _p2->makeMove(_board, _toMove) :
@@ -39,9 +39,13 @@ bool Game::step() {
 
 	size_t y = _board.put(_toMove, move);
 
+	
+	Board::Player toRet = causedWin(_board, move, y) ? _toMove :
+	                      _board.isFull()            ? Board::Player::E :
+	                                                   Board::Player::NONE;
+	
 	_toMove = _toMove == Board::Player::P2 ? Board::Player::P1 :
 	                                         Board::Player::P2;
 	
-	
-	return _board.isFull() || causedWin(_board, move, y);
+	return toRet;
 }

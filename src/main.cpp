@@ -14,7 +14,7 @@ int main() {
 
 	Game g(Board(7, 6), std::unique_ptr<Player>(p1), std::unique_ptr<Player>(p2));
 
-	while(!g.step());
+	while(g.step() == Board::Player::NONE);
 	
 	std::cout << g.board().toString() << std::endl;
 	std::cout << "THE WINNER IS: " << (unsigned int)g.board().winner() << std::endl;

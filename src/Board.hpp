@@ -6,7 +6,7 @@
 
 class Board {
 public:
-	enum class Player : unsigned char { E = 0, P1 = 1, P2 = 2 };
+	enum class Player : unsigned char { E = 0, P1 = 1, P2 = 2, NONE = 3 };
 	
 	Board(size_t width, size_t height);
 	Board(const Board& o);
